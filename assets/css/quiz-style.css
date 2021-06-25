@@ -249,8 +249,16 @@ body {
 
 .spn-space
 {
-    margin-right: 3px;
-    margin-left: 3px;
+    margin-right: 8px;
+    margin-left: 8px;
+}
+
+.alert-homeBox.hide{
+    display: none;
+}
+
+.alert-box.hide{
+    display: none;
 }
 
 footer {

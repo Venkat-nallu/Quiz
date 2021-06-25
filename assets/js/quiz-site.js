@@ -18,7 +18,6 @@ let optionsEnteredByUser = [];  // to store the option number entered by user
 
 let correctAnswers = 0;
 let attempt = 0;
-// let qnNo = -1;
 
 let userName = "";         
 
@@ -31,19 +30,14 @@ var secsRemaining,secsTaken;
 
 var flag=1;                  // to indicate the time taken(if takes more than given time then flag it to 0)
 
-// for review page
-
-// const allQuestions = [];
-
-// for(let i=0;i<quiz.length;++i)
-// {
-
-// }
-
-
 
         // ------------------- T I M E R     S T A R T ----------------------------
 
+//time up alert div
+ function hideAlertDiv()
+ {
+    document.querySelector(".alert-box").classList.add('hide');
+ }
 
  function Decrement() 
  { 
@@ -70,11 +64,9 @@ var flag=1;                  // to indicate the time taken(if takes more than gi
              seconds.value = getseconds(); 
          } 
 
-
          //when less than a minute remaining 
          //colour of the minutes and seconds 
          //changes to red 
-
 
          if (minutes.value <= 0 && seconds.value <= 10) 
          { 
@@ -82,16 +74,16 @@ var flag=1;                  // to indicate the time taken(if takes more than gi
              seconds.style.color = "red"; 
          } 
 
-
          //if seconds becomes zero, 
-         //then page alert time up 
+         //then page alerts time up 
          if (mins < 0 ) 
          { 
              minutes.value = 0; 
              seconds.value = 0; 
 
-             alert("Time up !!!");
-            
+             document.querySelector(".alert-box").classList.remove('hide');
+             setTimeout(hideAlertDiv,1500);
+                        
              flag = 0;
              minsTaken = quizTiming;
              secsTaken = 0 ;
@@ -352,11 +344,9 @@ function review()
         const li1 = document.createElement('li');
         li1.classList.add("list-group-item");
 
-        // li1.innerText = "hai";
 
         const span1 = document.createElement('span');
-        span1.classList.add("badge");
-        span1.classList.add("badge-primary");
+        span1.classList.add("badge","badge-primary");
         span1.innerHTML = "Question - "+(i+1);
 
         span1.classList.add("spn-space");
@@ -377,8 +367,7 @@ function review()
         li2.classList.add("list-group-item");
 
         const span3 = document.createElement('span');
-        span3.classList.add("badge");
-        span3.classList.add("badge-primary");        
+        span3.classList.add("badge","badge-primary");  
         span3.innerHTML = "Your answer";
         span3.classList.add("spn-space");
 
@@ -392,9 +381,7 @@ function review()
 
         if(op == undefined)
         {
-            span4.classList.add("badge");
-            span4.classList.add("badge-danger");   
-            span3.classList.add("badge-pill");            
+            span4.classList.add("badge","badge-danger","badge-pill");
             span4.innerHTML = "Not answered";
             span4.classList.add("spn-space");
         }
@@ -403,9 +390,7 @@ function review()
         {
             span4.innerText = quiz[qn].options[op];
 
-            span5.classList.add("badge");
-            span5.classList.add("badge-success");   
-            span5.classList.add("badge-pill");            
+            span5.classList.add("badge","badge-success","badge-pill");        
             span5.innerHTML = "Correct";
             span5.classList.add("spn-space");
 
@@ -413,12 +398,9 @@ function review()
 
         else
         {
-            span4.innerText = quiz[qn].options[op]
-
+            span4.innerText = quiz[qn].options[op];
             
-            span5.classList.add("badge");
-            span5.classList.add("badge-danger");   
-            span5.classList.add("badge-pill");            
+            span5.classList.add("badge","badge-danger","badge-pill");        
             span5.innerHTML = "Wrong";
             span5.classList.add("spn-space");
         }
@@ -434,8 +416,7 @@ function review()
         li3.classList.add("list-group-item");
 
         const span6 = document.createElement('span');
-        span6.classList.add("badge");
-        span6.classList.add("badge-primary");        
+        span6.classList.add("badge","badge-primary");      
         span6.innerHTML = "Correct answer";
         span6.classList.add("spn-space");
 
@@ -454,9 +435,7 @@ function review()
         Review.appendChild(document.createElement('br'));       
 
     }
-
-    // resultBox.classList.add("hide");
-    // document.getElementById("review").classList.remove("hide");
+ 
 }
 
 function previousPage()
@@ -486,13 +465,19 @@ function tryAgainQuiz()
     startQuiz();   
 }
 
+function hideHomeAlertDiv()
+{
+    document.querySelector(".alert-Homebox").classList.add('hide');
+}
+
 function validation()
 {
     var name = document.forms["name-validation"]["user-name"].value;
 
     if(name == "")
-    {
-        window.alert("Enter the name");          
+    {  
+        document.querySelector(".alert-homeBox").classList.remove('hide');  
+        setTimeout(hideHomeAlertDiv,1000);     
     }
     else
     {          

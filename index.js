@@ -11,12 +11,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded());
 app.use(express.static('assets'));
 
-// app.get('/', function (req, res) {
-
-//     return res.render('practice', {
-//         title: "Practice page"
-//     });
-// })
 
 app.get('/', function (req, res) {
 
@@ -25,15 +19,6 @@ app.get('/', function (req, res) {
     });
 })
 
-// var quizQuestion = require('./assets/js/quiz-question');
-// var quizSite = require('./assets/js/quiz-site');
-
-// app.get('/review', function (req, res) {
-
-//     return res.render('quizReview', {
-//         title: "Review Page"       
-//     });
-// })
 
 app.listen(port, function (err) {
     if (err) {

@@ -5,15 +5,13 @@
 	<title> <%= title %> </title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- <link rel="icon" type="image"
-		href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4_Lh029YeKXYwbY0crDSKGyscL4-BZjMQvA&usqp=CAU"> -->
-
-	<!-- <link rel="icon" type="image" href="image/image1_for_E-Quiz website.jpg">
-	<link rel="stylesheet" href="css/quiz-style.css"> -->
-
 	<link rel="icon" type="image" href = "/image/image1_for_E-Quiz website.jpg">
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 	<link rel="stylesheet" href = "/css/quiz-style.css">
 
@@ -27,12 +25,17 @@
 
 <body>
 
+	<div class="alert alert-danger alert-dismissible fade show alert-homeBox hide" style="max-width: 700px;margin: 40px auto;">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<strong>Warning!!!</strong>&nbsp;&nbsp;Enter your name</span>
+	</div>
+
 	<div class="home-box-1 custom-box ">
 
 		<h5>Kindly enter your name to visible in the Report Card at the end of quiz </h5>
 
-		<form name="name-validation" onSubmit="validation(); return false">
-			<input type="text" class="username" name="user-name" maxlength="50" placeholder="Enter your name">
+		<form name="name-validation" onSubmit="validation(); return false" method="POST">
+			<input type="text" class="username" name="user-name" maxlength="25" placeholder="Enter your name" >
 			<button type="submit" class="btn">Register</button>
 		</form>
 
@@ -53,8 +56,14 @@
 
 	</div>
 
+	<div class="alert alert-danger alert-dismissible fade show alert-box hide" style="max-width: 700px;margin: 40px auto;">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<strong>Alert!!!</strong> Time up
+	</div>
+
 	<div class="quiz-box custom-box  hide" id="quiz-box-id">
 
+		
 		<div class="question-number">
 			<!-- Question 1 Of 5 will be added here using js -->
 		</div>
@@ -91,7 +100,7 @@
 			</tr>
 
 			<tr>
-				<td>Attempt</td>
+				<td>Attempted questions</td>
 				<td><span class="total-attempt"></span></td>
 			</tr>
 
