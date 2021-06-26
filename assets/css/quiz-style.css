@@ -41,7 +41,7 @@ body {
     line-height: 25px;
 }
 
-.home-box-1 .username {
+/* .home-box-1 .username {
     max-width: 55%;
     background-color: #F7F7F7;
     padding: 7px 10px;
@@ -52,7 +52,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     display: block;
     margin-bottom: 20px;
-}
+} */
 
 .home-box-2 h3 {
     font-size: 18px;
@@ -71,7 +71,7 @@ body {
     margin-bottom: 20px;
 }
 
-.btn {
+/* .btn {
     padding: 12px 45px;
     max-width: 30%;
     background-color: #009688;
@@ -89,7 +89,7 @@ body {
 .btn:hover {
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
-}
+} */
 
 .quiz-box .question-number, .quiz-box .question-text,
 .quiz-box .answers-indicator, .quiz-box .next-question-btn,

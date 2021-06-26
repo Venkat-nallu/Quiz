@@ -13,6 +13,7 @@
  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+	  <!-- css should only be added after bs4 and all related links -->
 	<link rel="stylesheet" href = "/css/quiz-style.css">
 
 
@@ -35,8 +36,13 @@
 		<h5>Kindly enter your name to visible in the Report Card at the end of quiz </h5>
 
 		<form name="name-validation" onSubmit="validation(); return false" method="POST">
-			<input type="text" class="username" name="user-name" maxlength="25" placeholder="Enter your name" >
-			<button type="submit" class="btn">Register</button>
+			<div class="form-group">
+				<input type="text" class="form-control" name="user-name" maxlength="25" placeholder="Enter your name" style="width: 55%;" >
+				<!-- <button type="submit" class="btn">Register</button> -->
+			</div>	
+			<div>	
+				<button type="submit" class="btn btn-info">Register</button>
+			</div>
 		</form>
 
 	</div>
@@ -52,7 +58,7 @@
 		<p>You are not allowed to change the option once clicked</p>
 		<p>You can't copy the question(exceptional for iphone and mac devices)</p>
 
-		<button type="button" class="btn" onclick="startQuiz()">Start Quiz</button>
+		<button type="button" class="btn btn-info" onclick="startQuiz()">Start Quiz</button>
 
 	</div>
 
@@ -78,7 +84,7 @@
 		</div>
 
 		<div class="next-question-btn">
-			<button type="button" class="btn" onclick="next()">Next</button>
+			<button type="button" class="btn btn-info" onclick="next()">Next</button>
 		</div>
 
 	</div>
@@ -140,10 +146,10 @@
 
 		<div id="result-page-buttons">
 
-			<button type="button" class="btn" onclick="review()">Review</button>
+			<button type="button" class="btn btn-info" onclick="review()">Review</button>
 			<!-- <button type="button" class="btn" onclick="tryAgainQuiz()">Try Again</button>
 			<button type="button" class="btn" onclick="goToHome()">Go To Home</button> -->
-			<button type="button" id="download" class="btn" onclick="hideThisDiv()">Download Report</button>
+			<button type="button" id="download" class="btn btn-info" onclick="hideThisDiv()">Download Report</button>
 
 		</div>
 
@@ -156,7 +162,7 @@
 
 		</ul>
 
-		<button type="button" class="btn" onclick="previousPage()" style="margin: auto;display: block;">Previous Page</button>
+		<button type="button" class="btn btn-info" onclick="previousPage()" style="margin: auto;display: block;">Previous Page</button>
 
 	</div>
 
