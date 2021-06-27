@@ -1,180 +1,56 @@
 <html>
 
 <head>
+    <title> <%= title %> </title>
 
-	<title> <%= title %> </title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<link rel="icon" type="image" href = "/image/image1_for_E-Quiz website.jpg">
-
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
- 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-	  <!-- css should only be added after bs4 and all related links -->
-	<link rel="stylesheet" href = "/css/quiz-style.css">
+    <!-- noty js cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
 
 
-	<!------ for pdf download  ----->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-	<script src="pdf.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+    <link rel="stylesheet" href="/css/home.css">
 
 </head>
 
+
+
 <body>
 
-	<div class="alert alert-danger alert-dismissible fade show alert-homeBox hide" style="max-width: 700px;margin: 40px auto;">
-		<button type="button" class="close" data-dismiss="alert">&times;</button>
-		<strong>Warning!!!</strong>&nbsp;&nbsp;Enter your name</span>
-	</div>
+    <div class = "custom-box container-sm">
 
-	<div class="home-box-1 custom-box ">
+        <div>
+            <h3>Continue with</h3>
+        </div>
 
-		<h5>Kindly enter your name to visible in the Report Card at the end of quiz </h5>
+        <div class="col">
+            <a href = "/users/auth/google" class="google btn"><i class="fa fa-google fa-fw"></i>Google</a>
+        </div>
 
-		<form name="name-validation" onSubmit="validation(); return false" method="POST">
-			<div class="form-group">
-				<input type="text" class="form-control" name="user-name" maxlength="25" placeholder="Enter your name" style="width: 55%;" >
-				<!-- <button type="submit" class="btn">Register</button> -->
-			</div>	
-			<div>	
-				<button type="submit" class="btn btn-info">Register</button>
-			</div>
-		</form>
+    </div>
 
-	</div>
+    <script>
 
+        <% if(flash.success && flash.success.length >0) { %>
+    
+        new Noty({
+            
+            theme: 'bootstrap-v4',
+            text: "<%= flash.success %>",
+            type: 'success',
+            layout: 'topRight',
+            timeout: 1500
+        
+        }).show();
 
-	<div class="home-box-2 custom-box hide">
+        <% } %>
 
-		<h3>Instruction</h3>
-
-		<p>Timing : <span class="quiz-timing"></span> minute </p>
-		<p id="qn-instruction">Total number of questions : <span class="total-question "></span></p>
-		<p>You can download your Report Card at the end of quiz</p>
-		<p>You are not allowed to change the option once clicked</p>
-		<p>You can't copy the question(exceptional for iphone and mac devices)</p>
-
-		<button type="button" class="btn btn-info" onclick="startQuiz()">Start Quiz</button>
-
-	</div>
-
-	<div class="alert alert-danger alert-dismissible fade show alert-box hide" style="max-width: 700px;margin: 40px auto;">
-		<button type="button" class="close" data-dismiss="alert">&times;</button>
-		<strong>Alert!!!</strong> Time up
-	</div>
-
-	<div class="quiz-box custom-box  hide" id="quiz-box-id">
-
-		
-		<div class="question-number">
-			<!-- Question 1 Of 5 will be added here using js -->
-		</div>
-
-
-		<div class="question-text">
-			<!-- Question will be added here using js -->
-		</div>
-
-		<div class="option-container">
-			<!--Divs are added as the options -->
-		</div>
-
-		<div class="next-question-btn">
-			<button type="button" class="btn btn-info" onclick="next()">Next</button>
-		</div>
-
-	</div>
-
-	<div class="result-box custom-box hide" id="result-box-id">
-
-		<h1>Report Card</h1>
-
-		<table class="result-table">
-
-			<tr>
-				<td>Username</td>
-				<td><span class="name-of-user"></span></td>
-			</tr>
-
-			<tr>
-				<td>Total Questions</td>
-				<td><span class="total-question"></span></td>
-			</tr>
-
-			<tr>
-				<td>Attempted questions</td>
-				<td><span class="total-attempt"></span></td>
-			</tr>
-
-			<tr>
-				<td>Correct</td>
-				<td><span class="total-correct"></span></td>
-			</tr>
-
-			<tr>
-				<td>Wrong</td>
-				<td><span class="total-wrong"></span></td>
-			</tr>
-
-			<tr>
-				<td>Given time</td>
-				<td><span class="total-timegiven"></span></td>
-			</tr>
-
-			<tr>
-				<td>Taken time</td>
-				<td><span class="total-timetaken"></span></td>
-			</tr>
-
-			<tr>
-				<td>Percentage</td>
-				<td><span class="percentage"></span></td>
-			</tr>
-
-			<tr>
-				<td>Your total score </td>
-				<td><span class="total-score"> </span></td>
-			</tr>
-
-		</table>
-
-		<!-- These 3 buttons are created inside div to hide this div as a whole when downloading report -->
-
-		<div id="result-page-buttons">
-
-			<button type="button" class="btn btn-info" onclick="review()">Review</button>
-			<!-- <button type="button" class="btn" onclick="tryAgainQuiz()">Try Again</button>
-			<button type="button" class="btn" onclick="goToHome()">Go To Home</button> -->
-			<button type="button" id="download" class="btn btn-info" onclick="hideThisDiv()">Download Report</button>
-
-		</div>
-
-	</div>
-
-	<div id ="review" class = "review container-sm hide custom-box">
-
-		<h1 style="text-align: center;">Review Page</h1>
-		<ul class="list-group review-container">
-
-		</ul>
-
-		<button type="button" class="btn btn-info" onclick="previousPage()" style="margin: auto;display: block;">Previous Page</button>
-
-	</div>
-
-	<!-- JS -->
-
-	<script src="/js/quiz-question.js"> </script>
-	<script src="/js/quiz-site.js"> </script>
+    </script>
 
 </body>
 
-<footer>
-	<span>Made with ❤️ by Venkatesh</span>
-</footer>
 
 </html>

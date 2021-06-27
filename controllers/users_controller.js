@@ -15,9 +15,12 @@ module.exports.signUp = function(req, res){
         return res.redirect('/users/profile');
     }
 
-    return res.render('user_sign_up', {
-        title: "Codeial | Sign Up"
-    })
+    // return res.render('user_sign_up', {
+    //     title: "E-Quiz | Sign Up"
+    // })
+
+    return res.redirect("/users/auth/google");
+
 }
 
 // render the sign in page
@@ -28,9 +31,11 @@ module.exports.signIn = function(req, res){
         return res.redirect('/users/profile');
     }
 
-    return res.render('user_sign_in', {
-        title: "Codeial | Sign In"
-    })
+    // return res.render('user_sign_in', {
+    //     title: "E-Quiz | Sign In"
+    // })
+
+    return res.redirect("/users/auth/google");
 }
 
 // get the sign up data
@@ -97,12 +102,17 @@ module.exports.create = function(req, res){
 
 // sign in and create a session for the user(by passport.js authentication)
 module.exports.createSession = function(req, res){
+
+    req.flash('success','Logged in Successfully');
+
     return res.redirect('/users/profile');
 }
 
 // sign-out
 module.exports.destroySession = function(req, res){
     
+    req.flash('success','Logged out Successfully');
+
     req.logout();
 
     return res.redirect('/');

@@ -1,8 +1,66 @@
-<h1>
-    Codeial / Profile Page
-</h1>
+<html>
+   
+<head>
+    <title> <%= title %> </title>
 
-<p>Name: <%= user.name %></p>
-<p>Email: <%= user.email %></p>
+     <!-- noty js cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
 
-<a href="/users/sign-out">Sign Out</a>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
+
+    <link rel="stylesheet" href="/css/user_profile.css">
+
+</head>
+
+<body>
+
+    <% if(locals.flag == 1) { %>
+
+        <div class="alert alert-danger alert-dismissible fade show alert-homeBox hide" style="max-width: 700px;margin: 40px auto;">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+           <span>You are not an admin</span>
+        </div>
+
+    <% } %>
+
+    
+    <div class="container-sm custom-box">
+
+        <div id="intro">
+            <p>Hello <b> <i><%= user.name %></i></b>, Welcome to E-Quiz portal </p>
+        </div>
+
+        <div class="buttons">		
+            <button onclick = " location.href='/quiz' " type="button" class="btn btn-info">Start Quiz</button>    
+          
+            <button onclick = " location.href='/users/sign-out' " type="button" class="btn btn-info">Sign Out</button>   
+            
+            <button onclick = " location.href='/admin-view' " type="button" class="btn btn-info">Admin</button>
+        </div>
+
+    </div>
+
+    <script>
+
+        <% if(flash.success && flash.success.length >0) { %>
+    
+        new Noty({
+            
+            theme: 'bootstrap-v4',
+            text: "<%= flash.success %>",
+            type: 'success',
+            layout: 'topRight',
+            timeout: 1500
+        
+        }).show();
+
+        <% } %>
+
+    </script>
+</body>
+
+</html>

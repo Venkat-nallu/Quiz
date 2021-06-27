@@ -1,4 +1,11 @@
 const express = require('express');     // adding express library from nodejs
+
+// adminbro---------------------------1
+const AdminBro = require('admin-bro');
+const mongooseAdminBro = require('@admin-bro/mongoose');
+const expressAdminBro = require('@admin-bro/express');
+// -----------------------------------1
+
 const cookieParser = require('cookie-parser');
 const port = process.env.PORT || 8200;
 const db = require('./config/mongoose');
@@ -12,6 +19,20 @@ const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
 const passportGoogle = require('./config/passport-google-oauth2-strategy');
 const MongoStore = require('connect-mongodb-session')(session);
+
+const flash = require('connect-flash');
+const customMware = require('./config/middleware');
+
+
+//Admin Bro and Models --------------------------- 2
+const Visiter = require('./models/user');
+
+AdminBro.registerAdapter(mongooseAdminBro)
+const AdminBroOptions = {
+  resources: [Visiter],
+}
+// ----------------------------------------------- 2
+
 
 app.use(express.urlencoded());
 app.use(cookieParser());
@@ -42,7 +63,7 @@ app.use(session({
         
         },
         function(err){
-            console.log(err ||  'connect-mongodb setup ok');
+            console.log(err ||  'connect-mongodb-session setup ok');
         }
     )
 
@@ -53,8 +74,47 @@ app.use(passport.session());
 
 app.use(passport.setAuthenticatedUser);
 
+// flash should be placed after session
+
+app.use(flash());
+app.use(customMware.setFlash);
+
+
+//adminbro --------------------------------  3
+
+const adminBro = new AdminBro(AdminBroOptions)
+const router = expressAdminBro.buildRouter(adminBro)
+
+app.use(adminBro.options.rootPath, router)
+
+// --------------------------------------------- 3
+
+
+
+
+// -------- checking------------
+
+// app.get("/admin", function (req, res, next) {
+
+//     // res.locals.login = req.user;
+
+//     console.log("\n details = ",req.user);
+
+//     if (req.user.mail == "vijayvenkatesh503@gmail.com") {
+//        res.send('/admin')
+//     } else {
+//       res.redirect("/");
+//    }
+//   });
+// ----------checking---------
+
+
+
+
+
 
 // use express router(should be placed at end)
+
 app.use('/', require('./routes'));
 
 app.listen(port, function (err) {
