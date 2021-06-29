@@ -48,7 +48,6 @@ app.set('views', './views');
 app.use(session({
 
     name: 'E-Quiz',
-    // TODO change the secret before deployment in production mode
     secret: 'blahsomething',
     saveUninitialized: false,
     resave: false,
