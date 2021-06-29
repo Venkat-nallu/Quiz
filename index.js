@@ -93,7 +93,7 @@ app.use(adminBro.options.rootPath, router)
 
 app.use('/', require('./routes'));
 
-app.listen(port, function (err) {
+app.listen(process.env.PORT || port, function (err) {
     if (err) {
         console.log("Error in running express server ...... ", err);
     }
