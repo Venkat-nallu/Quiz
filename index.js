@@ -7,7 +7,7 @@ const expressAdminBro = require('@admin-bro/express');
 // -----------------------------------1
 
 const cookieParser = require('cookie-parser');
-const port = process.env.PORT || 8200;
+const port = 8200;
 const db = require('./config/mongoose');
 const path = require('path');           //to join path of ejs files to current file
 
