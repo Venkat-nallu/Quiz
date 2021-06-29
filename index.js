@@ -57,6 +57,7 @@ app.use(session({
 
     store: new MongoStore(
         {
+            uri: `mongodb+srv://VKS_CONTACT_LIST:vkscontactlist@cluster0.l0cj6.mongodb.net/E-Quiz?retryWrites=true&w=majority`,
             mongooseConnection: db,
             autoRemove: 'disabled'
         
