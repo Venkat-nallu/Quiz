@@ -1,37 +1,38 @@
 // Adding questions and options for the quiz
 
-                                            // Array of objects 
+// Array of object
+
 const quiz = [
     {
-        q:'Which month comes right before june ?',
-        options:['may','september','july','august'],
-        answer:0
+        q: 'What is the range of character data type in C language ?',
+        options: ['-128 to 255', '-127 to 128', '-128 to 127', '0 to 128'],
+        answer: 2
     },
 
     {
-        q:'What color is a banana ?',
-        options:['red','yellow','blue','white'],
-        answer:1
+        q: 'What is the range of int data type in C language ?',
+        options: ['-32768 to 32767', '-32767 to 32769', '-32780 to 32790', '0 to 65438'],
+        answer: 0
     },
 
     {
-        q:'3 + 4 = 7 ?',
-        options:['false','true'],
-        answer:1
+        q: 'What is the memory bytes of double data type in C language ?',
+        options: ['4', '2', '10', '8'],
+        answer: 3
     },
 
     {
-        q:'What time of day do we have breakfast ?',
-        options:['In the afternoon','In the morning','In the evening'],
-        answer:1
+        q: 'What is the memory bytes of float data type in C language ?',
+        options: ['8', '4', '2', '16'],
+        answer: 1
     },
+
     {
-        q:'What is 2*6 ?',
-        options:['11','10','13','12'],
-        answer:3
+        q: 'What is the format specifier of long double data type in C language ?',
+        options: ['%Lf', '%f', '%llu', '%lu'],
+        answer: 0
     },
 ]
 
-                                            // Quiz Timing
 
 const quizTiming = 1;  // 1 minute
