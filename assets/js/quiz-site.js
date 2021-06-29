@@ -253,10 +253,10 @@ function checkResult(element)
     {
         ++correctAnswers;
     }
-    else
-    {
-        console.log("Wrong answer");
-    }
+    // else
+    // {
+    //     console.log("Wrong answer");
+    // }
 
     ++attempt;
 
@@ -377,7 +377,7 @@ function review()
 
         // ------------testing
 
-        console.log("testing optionsEnteredByUser[] ==> ",optionsEnteredByUser);
+        // console.log("testing optionsEnteredByUser[] ==> ",optionsEnteredByUser);
 
         if(op == undefined)
         {
