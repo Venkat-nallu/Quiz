@@ -523,7 +523,7 @@ function startQuiz()
 function DisplayThisDiv()
 {
     document.getElementById("result-page-buttons").classList.remove("hide");
-    goToHome();
+    // goToHome();
 }
 
 function hideThisDiv()

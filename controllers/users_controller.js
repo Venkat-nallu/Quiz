@@ -3,7 +3,7 @@ const User = require('../models/user');
 
 module.exports.profile = function(req, res){
 
-    return res.render('user_profile', { title: "User Profile"});
+    return res.render('user_dashboard', { title: "Dashboard"});  //-------------
 }
 
 
@@ -12,15 +12,10 @@ module.exports.signUp = function(req, res){
 
     if (req.isAuthenticated())
     {
-        return res.redirect('/users/profile');
+        return res.redirect('/users/profile');    //---------------
     }
 
-    // return res.render('user_sign_up', {
-    //     title: "E-Quiz | Sign Up"
-    // })
-
     return res.redirect("/users/auth/google");
-
 }
 
 // render the sign in page
@@ -28,12 +23,8 @@ module.exports.signIn = function(req, res){
 
     if (req.isAuthenticated())
     {
-        return res.redirect('/users/profile');
+        return res.redirect('/users/profile');    //----------------
     }
-
-    // return res.render('user_sign_in', {
-    //     title: "E-Quiz | Sign In"
-    // })
 
     return res.redirect("/users/auth/google");
 }
@@ -101,18 +92,36 @@ module.exports.create = function(req, res){
 
 
 // sign in and create a session for the user(by passport.js authentication)
-module.exports.createSession = function(req, res){
-
+module.exports.createSession = function(req, res)
+{
     req.flash('success','Logged in Successfully');
 
-    return res.redirect('/users/profile');
+    // updating the updatedAt value once user login again after registration
+    User.findOneAndUpdate({email: req.user.email}, {updatedAt: Date.now()}, (err, user) => {
+
+        if(err) { console.log(err); return;}
+
+        else { console.log("\n\n\nSuccessfully updated the updatedAt value......", user);return; }
+    
+      });   
+      
+      
+      // Filling the loginHistory Array each time if user signed in 
+    User.findOneAndUpdate({email: req.user.email}, { $push: { loginHistory: Date.now()} }, (err, user) => {
+
+        if(err) { console.log(err); return;}
+
+        else { console.log("\n\n\nSuccessfully updated the loginHistory......", user);return; }
+    
+      });   
+
+    return res.redirect('/users/profile');  //---------------------
 }
 
 // sign-out
-module.exports.destroySession = function(req, res){
-    
+module.exports.destroySession = function(req, res)
+{    
     req.flash('success','Logged out Successfully');
-
     req.logout();
 
     return res.redirect('/');

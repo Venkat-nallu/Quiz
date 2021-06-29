@@ -1,18 +1,27 @@
 const express = require('express');
 
+const User = require('../models/user');
+
 const router = express.Router();
-// const homeController = require('../controllers/home_controller');
+const passport = require('passport');
 const homeController = require('../controllers/home_controller');
-// const adminController = require('../controllers/admin_controller');
+
 
 
 router.get('/', homeController.home);
 
 router.get('/quiz',function(req,res)
 {
-    return res.render('quiz', {
-        title: "E-Quiz"
-    });
+
+    if ( req.isAuthenticated() )
+    {
+        return res.render('quiz', {
+            title: "E-Quiz"
+        });      
+    }
+
+
+    return res.redirect('/');
 });
 
 router.get('/admin-view',function(req,res){
@@ -25,19 +34,16 @@ router.get('/admin-view',function(req,res){
     else 
     {
         console.log('\n\nyou are not a admin\n\n')
-        req.locals.flag = 1;
-        // res.redirect('users/profile');
-        // res.render('user_profile', { title : "Profile",flag=0 });
 
-        res.render('user_profile',{ title : "Profile"});
+        req.flash('error','You are not an admin !!!'); 
+        res.redirect('back');
     }
 });
 
-// router.get('/admin-view',adminController.admin);
+
+
 
 router.use('/users', require('./users'));
 
-// for any further routes, access from here
-// router.use('/routerName', require('./routerfile));
 
 module.exports = router;

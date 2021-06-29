@@ -75,7 +75,6 @@ app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
 
 // flash should be placed after session
-
 app.use(flash());
 app.use(customMware.setFlash);
 
@@ -90,36 +89,13 @@ app.use(adminBro.options.rootPath, router)
 // --------------------------------------------- 3
 
 
-
-
-// -------- checking------------
-
-// app.get("/admin", function (req, res, next) {
-
-//     // res.locals.login = req.user;
-
-//     console.log("\n details = ",req.user);
-
-//     if (req.user.mail == "vijayvenkatesh503@gmail.com") {
-//        res.send('/admin')
-//     } else {
-//       res.redirect("/");
-//    }
-//   });
-// ----------checking---------
-
-
-
-
-
-
 // use express router(should be placed at end)
 
 app.use('/', require('./routes'));
 
 app.listen(port, function (err) {
     if (err) {
-        console.log("Error in running express server ", err);
+        console.log("Error in running express server ...... ", err);
     }
-    console.log("\nYeah!!! Express server for E-Quiz is running in port ", port);
+    console.log("\nYeah!!! Express server for E-Quiz is running in  ............  ", port);
 })

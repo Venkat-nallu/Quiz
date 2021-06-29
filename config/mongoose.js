@@ -4,7 +4,7 @@ mongoose.connect('mongodb://localhost/E-Quiz');
 
 const db = mongoose.connection;
 
-db.on('error', console.error.bind(console, "\nError connecting to MongoDB\n"));
+db.on('error', console.error.bind(console, "\n\nError connecting to MongoDB\n\n"));
 
 
 db.once('open', function(){

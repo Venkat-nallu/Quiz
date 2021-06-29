@@ -1,0 +1,135 @@
+<html>
+<head>
+
+    <title>
+        <%= title %>
+    </title>
+
+     <!-- noty js cdn -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- css should only be added after bs4 and all related links -->
+    <link rel="stylesheet" href="/css/user_dashboard.css">
+
+</head>
+
+<body>
+
+    <!-- <ul>
+
+        <% userDetails.forEach(function(user) {%>
+            <li> <%= 1 %>
+                <ul>
+                    <% Object.keys(user).forEach(function(data) {%>
+
+                        <li><strong> <%= data%> </strong>: <%= user[data] %></li>
+                     
+                    <% }); %> 
+                </ul>
+            </li>
+        <% }); %>       
+
+    </ul> -->
+
+    <div class="container-sm custom-box">
+
+        <div id="intro">
+            <p>Hello <b> <i><%= user.name %></i></b>, Welcome to E-Quiz portal </p>
+        </div>
+
+        <div class="buttons">		
+            <button onclick = " location.href='/quiz' " type="button" class="btn btn-info mb-2">Start Quiz</button>    
+          
+            <button onclick = " location.href='/users/sign-out' " type="button" class="btn btn-info mb-2">Sign Out</button>   
+            
+            <button onclick = " location.href='/admin-view' " type="button" class="btn btn-info mb-2">Admin</button>
+
+            <button data-toggle="collapse" class="btn btn-info mb-2" data-target="#demo">Login History</button>
+        </div>
+
+    </div>
+
+
+    <div class="collapse container" id = "demo">
+       
+        <table class="table table-dark table-bordered table-striped table-hover">
+
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Login History</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <% userDetails.forEach(function (data) { %>
+
+                    <% for(let i of data.loginHistory) { %>
+            
+                        <tr>
+                            <td><%= user.name %></td>
+                            <td><%= user.email %></td>
+                            <td><%= i %></td>
+                        </tr>
+            
+                    <% } %>   
+                    
+                <% }) %>
+               
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <!-- JS -->
+
+	<!-- <script > </script> -->
+
+    <script>
+
+        <% if(flash.success && flash.success.length >0) { %>
+    
+        new Noty({
+            
+            theme: 'bootstrap-v4',
+            text: "<%= flash.success %>",
+            type: 'success',
+            layout: 'topRight',
+            timeout: 1500
+        
+        }).show();
+
+        <% } %>
+
+        <% if(flash.error && flash.error.length >0) { %>
+    
+        new Noty({
+            
+            theme: 'bootstrap-v4',
+            text: "<%= flash.error %>",
+            type: 'error',
+            layout: 'topRight',
+            timeout: 1500
+        
+        }).show();
+
+    <% } %>
+
+    </script>
+
+
+</body>
+
+</html>

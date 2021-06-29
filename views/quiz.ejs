@@ -151,6 +151,11 @@
 			<button type="button" class="btn" onclick="goToHome()">Go To Home</button> -->
 			<button type="button" id="download" class="btn btn-info" onclick="hideThisDiv()">Download Report</button>
 
+			<!-- <button type="button" class="btn btn-info" onclick = " location.href='/dash'" >Go to My Profile</button> -->
+
+			<button type="button" class="btn btn-info"data-toggle="modal" data-target="#myModal" >Go to My Profile</button>
+
+
 		</div>
 
 	</div>
@@ -165,6 +170,38 @@
 		<button type="button" class="btn btn-info" onclick="previousPage()" style="margin: auto;display: block;">Previous Page</button>
 
 	</div>
+
+	<div class="container">
+			  
+		<!-- The Modal -->
+		<div class="modal fade" id="myModal">
+		  <div class="modal-dialog">
+			<div class="modal-content">
+			
+			  <!-- Modal Header -->
+			  <div class="modal-header">
+				<h4 class="modal-title">Attention !!!</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			  </div>
+			  
+			  <!-- Modal body -->
+			  <div class="modal-body">
+			   Once clicking on Go to, you can't come again to report page
+			  </div>
+			  
+			  <!-- Modal footer -->
+			  <div class="modal-footer">         
+			  
+				<button type="button" class="btn btn-success" onclick="location.href='users/profile';" >Go to</button>				
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+			  </div>
+			  
+			</div>
+		  </div>
+		</div>
+		
+	  </div>
 
 	<!-- JS -->
 
