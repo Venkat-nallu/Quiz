@@ -1,0 +1,67 @@
+<html>
+
+<head>
+
+    <title>
+        <%= title %>
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- css should only be added after bs4 and all related links -->
+    <link rel="stylesheet" href="/css/admin.css">
+
+</head>
+
+<body>
+
+    <!-- d-flex justify-content-center align-items-center -->
+
+    <div id="form-group" class="div1 container-sm">
+
+        <form name="validation" class="form-inline" onSubmit="validate(); return false">
+
+            <input type = "number" class="form-control mb-2 mt-2 mr-sm-2" name="no-of-qns" min="2" placeholder="Enter no.of qns" style="width: 60%;" required>
+
+            <button type="submit" class="btn btn-success ">Submit</button>
+
+        </form>
+
+    </div>
+
+    <div id="form-group" class="div2 container-sm hide">
+
+        <form name="qnValidation" class="form-inline qn-container" onSubmit="storeQn(); return false">
+
+            <!-- input elements will be added for qns -->
+
+        </form>
+
+    </div>
+
+    <div id="form-group" class="div3 container-sm hide">
+
+        <form name="Options" id="option-form" class="form-inline option-container" onSubmit="storeOption(); return false">
+
+            <!-- input elements will be added for options  -->
+
+        </form>
+
+    </div>
+
+    <!-- JS -->
+    <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+
+	<script src="/js/admin.js"> </script>
+
+</body>
+
+</html>

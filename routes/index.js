@@ -7,8 +7,14 @@ const passport = require('passport');
 const homeController = require('../controllers/home_controller');
 
 
-
 router.get('/', homeController.home);
+
+router.post('/request',function(req,res){
+
+    console.log(req.body);
+    return;
+
+});
 
 router.get('/quiz',function(req,res)
 {
@@ -24,12 +30,32 @@ router.get('/quiz',function(req,res)
     return res.redirect('/');
 });
 
+router.get('/vks001',function(req,res){
+
+    console.log('\n\n\ninside admin router....');
+
+    if (req.isAuthenticated())
+    {
+        if (req.user.email == 'vijayvenkatesh503@gmail.com')
+        {
+            return res.redirect('/vks001');
+        }
+
+        else return res.redirect('back');
+    }
+});
+
 router.get('/admin-view',function(req,res){
 
     console.log("\nhai......................");
     console.log("\nUser details = " ,req.user);
 
-    if(req.user.email == 'vijayvenkatesh503@gmail.com') return res.redirect('/admin');
+    if (req.isAuthenticated() && req.user.email == 'vijayvenkatesh503@gmail.com')
+    {
+        return res.redirect('/vks001');    //---------------
+    }
+
+    // if(req.user.email == 'vijayvenkatesh503@gmail.com') return res.redirect('/vks001');
 
     else 
     {
@@ -41,9 +67,16 @@ router.get('/admin-view',function(req,res){
 });
 
 
+// Allow admin to set question and ans via form
+router.get('/admin',function(req,res){
+
+    return res.render('admin', {
+        title: "Admin Page"
+    });  
+
+});
 
 
 router.use('/users', require('./users'));
-
 
 module.exports = router;

@@ -13,7 +13,7 @@ module.exports.signUp = function(req, res){
     if (req.isAuthenticated())
     {
         return res.redirect('/users/profile');    //---------------
-    }
+    }x
 
     return res.redirect("/users/auth/google");
 }

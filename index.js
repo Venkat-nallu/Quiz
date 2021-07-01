@@ -28,8 +28,12 @@ const customMware = require('./config/middleware');
 const Visiter = require('./models/user');
 
 AdminBro.registerAdapter(mongooseAdminBro)
+
 const AdminBroOptions = {
-  resources: [Visiter],
+    rootPath : '/vks001',
+    // logoutPath: '/xyz-admin/exit',
+    // loginPath: '/xyz-admin/sign-in',
+    resources: [Visiter]
 }
 // ----------------------------------------------- 2
 

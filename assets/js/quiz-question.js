@@ -25,7 +25,7 @@ const quiz = [
         q: 'What is the memory bytes of float data type in C language ?',
         options: ['8', '4', '2', '16'],
         answer: 1
-    },
+    },  
 
     {
         q: 'What is the format specifier of long double data type in C language ?',
