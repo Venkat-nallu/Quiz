@@ -1,7 +1,7 @@
 const passport = require('passport');
 
 const LocalStrategy = require('passport-local').Strategy;
-const User = require('../models/user');
+const User = require('../config/mongoose');
 
 
 // authentication using passport
@@ -59,7 +59,10 @@ passport.checkAuthentication = function(req, res, next){
     }
 
     // if the user is not signed in
-    return res.redirect('/users/sign-in');
+    // return res.redirect('/users/sign-in');
+
+    return res.redirect('/');
+
 }
 
 passport.setAuthenticatedUser = function(req, res, next){

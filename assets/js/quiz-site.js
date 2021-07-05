@@ -9,6 +9,8 @@ const resultBox = document.querySelector(".result-box");
 
 const Review = document.querySelector(".review-container")
 
+const quizTiming = 1;   //----------------------------------------------------------------------------------------------
+
 let questionCounter = 0;
 let currentQuestion;
 let availableQuestions = [];  // array to store all questions and its options from 'quiz' object

@@ -1,0 +1,58 @@
+ @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+body {
+    font-size: 16px;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    user-select: none;
+}
+
+.qz-name:hover
+{
+    cursor: pointer;
+    color: rgb(0, 119, 255);
+
+}
+
+/* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+}*/
+
+hr {
+    display: block;
+    border-top: 1px solid #ccc;
+    margin-top: 5px;
+}
+
+
+ol li {
+    color: rgb(226, 43, 43);
+    font-size: 20px;
+  }
+
+.custom-box {
+    max-width: 600px;
+    background-color: white;
+    margin: 115px auto;
+    padding: 30px;
+    border-radius: 10px;
+} 
+
+#quiz-list-div h3
+{
+    text-align: center;
+    color: #009688;
+    line-height: 42px;
+
+}
+
+.qz-name
+{
+    font-size: 20px;
+    color: blue;
+}

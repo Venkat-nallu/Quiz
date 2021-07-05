@@ -16,6 +16,32 @@ body {
     outline: none;
 }
 
+.custom-box {
+    max-width: 600px;
+    background-color: white;
+    margin: 115px auto;
+    padding: 30px;
+    border-radius: 10px;
+} 
+
+.div0 h3
+{
+    text-align: center;
+    color: #009688;
+    line-height: 42px;
+
+}
+
+hr {
+    display: block;
+    border-top: 1px solid #ccc;
+    margin-top: 5px;
+}
+
+.div0.hide{
+    display: none;
+}
+
 .div1.hide{
     display: none;
 }
@@ -24,6 +50,21 @@ body {
     display: none;
 }
 
+.create-qn-btns.hide{
+    display: none;
+}
+
+.create-qn-btns
+{
+    text-align: center;
+    justify-content: center;
+}
+
+#div0-buttons
+{
+    text-align: center;
+    justify-content: center;
+}
 
 /* .question-container .br-act
 {

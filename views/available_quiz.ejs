@@ -1,0 +1,111 @@
+<html>
+<head>
+
+    <title>
+        <%= title %>
+    </title>    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- axios cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- css should only be added after bs4 and all related links -->
+    <link rel="stylesheet" href="/css/available_quiz.css">
+
+</head>
+
+<body>
+
+   
+
+    <!-- <div>        -->
+
+        <!-- <p>Available Quiz</p> -->
+
+        <!-- <p> <%= allQuiz %> </p> -->
+
+        <div class = "custom-box container-sm" id="quiz-list-div">
+
+            <h3>Available Quiz</h3>
+            <hr/>
+            
+            <ol>
+
+                <% var a = 0; %>
+
+                <% for(let i of allQuiz) { %>
+
+                    <li class = "list   -items"> 
+                        <div class = "qz-name container-sm" id= <%=a %> onclick="redir(this)">
+                            <%= i%>
+                        </div>
+
+                    </li>
+
+                    <% ++a %>
+
+                <% } %>
+
+            </ol>
+
+
+            <div>
+
+                <hr/>                    
+                <button onclick = " location.href='users/profile' " type="button" class="btn btn-info" style="display: block;margin: auto;">Go back</button>
+
+            </div>    
+
+        </div>
+         
+
+    <!-- </div> -->
+   
+
+    <!-- JS -->
+
+    <script>      
+        // console.log('quizarray checking ',allQuiz);
+
+        var quizArr = <%- JSON.stringify(allQuiz) %>;
+
+        function redir(ele)
+        {
+            // console.log('checking div...',quizArr[ ele.id ]);
+
+            // window.location.reload();
+
+
+            axios.post('/quiz-action', {
+
+                nameOfQuiz:quizArr[ ele.id ]
+
+                })
+                .then((response) => 
+                {
+                    console.log('inside axio in availble_quiz.ejs file -- response received is ',response.data.FinalQuizArray);
+
+                    window.location = "/quiz";                
+                }, 
+
+                (error) => 
+                {
+                    console.log(error);
+                });
+            
+        }
+
+
+       
+    </script>
+
+</body>
+
+</html>

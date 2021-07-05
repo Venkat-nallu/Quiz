@@ -1,34 +1,40 @@
 const express = require('express');
 
-const User = require('../models/user');
+const User = require('../config/mongoose');
+const QuestionSchema = require('../config/mongoose1');
+
 
 const router = express.Router();
 const passport = require('passport');
 const homeController = require('../controllers/home_controller');
+const adminController = require('../controllers/admin_controller');
 
 
 router.get('/', homeController.home);
 
-router.post('/request',function(req,res){
+// axios from admin.js for adding quiz final array of object after created by admin
+router.post('/request',adminController.qns);
 
-    console.log(req.body);
-    return;
+// axios for receiving the user clicked quiz from list of available quiz in available_quiz.ejs file
+router.post('/quiz-action', adminController.returningQuizFromDb);
 
-});
+router.get('/quiz',adminController.quizPage);
 
-router.get('/quiz',function(req,res)
-{
+// router.get('/quiz',function(req,res)
+// {
 
-    if ( req.isAuthenticated() )
-    {
-        return res.render('quiz', {
-            title: "E-Quiz"
-        });      
-    }
+//     // if ( req.isAuthenticated() ) //------------------
+//     // {
 
+//         return res.render('quiz', {
+//             title: "E-Quiz"
+//         });     
 
-    return res.redirect('/');
-});
+//     // }
+
+// //     // return res.redirect('/');    // -------------------
+
+// });
 
 router.get('/vks001',function(req,res){
 
@@ -66,13 +72,45 @@ router.get('/admin-view',function(req,res){
     }
 });
 
+// available quiz page
+
+router.get('/available-quiz', (req,res)=>{
+
+    QuestionSchema.find().distinct( 'qzName', function(err, data) {
+        
+        // console.log('\n\n\n Inside availabe quiz router -- all unique quiz  ',data)
+
+        res.render('available_quiz', {
+            'title': "Available Quiz",
+            'allQuiz': data
+        });
+
+    }).lean();
+
+
+    // return res.render('available_quiz', {
+    //     title: "Availabe Quiz"
+    // }); 
+
+})
 
 // Allow admin to set question and ans via form
 router.get('/admin',function(req,res){
 
-    return res.render('admin', {
-        title: "Admin Page"
-    });  
+    if (req.isAuthenticated() && req.user.email == 'vijayvenkatesh503@gmail.com')
+    {
+        return res.render('admin', {
+            title: "Admin Page"
+        });  
+    }
+
+    else 
+    {
+        console.log('\n\nyou are not a admin\n\n')
+
+        req.flash('error','You are not an admin !!!'); 
+        res.redirect('back');
+    }
 
 });
 

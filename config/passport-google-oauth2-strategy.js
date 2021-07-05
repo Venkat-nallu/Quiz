@@ -2,7 +2,7 @@ const passport = require('passport');
 const googleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 const crypto = require('crypto');
-const User = require('../models/user');
+const User = require('../config/mongoose');
 
 //tell passport to add a new strategy for google login
 passport.use(new googleStrategy(
@@ -18,7 +18,7 @@ passport.use(new googleStrategy(
         // find a user
         User.findOne({email:profile.emails[0].value}).exec(function(err,user){
 
-            if(err) { console.log('Error in google-strategy-passport',err); return; }
+            if(err) { console.log('\n\nError in google-strategy-passport',err); return; }
 
             console.log(accessToken,refreshToken);
             console.log(profile);

@@ -25,13 +25,42 @@
 
     <!-- d-flex justify-content-center align-items-center -->
 
-    <div id="form-group" class="div1 container-sm">
+    <div id="form-group" class="div0 custom-box container-sm">
+
+        <h3>Continue with ... </h3>
+        <hr/>
+
+        <div id="div0-buttons" class = "container-sm">
+            <button onclick = " location.href='/users/profile' " type="button" class="btn btn-info mr-2 mb-2">Go back</button>   
+                
+            <button onclick = "enableDivOne()" type="button" class="btn btn-info mr-2 mb-2">Create Quiz</button>
+
+            <button onclick = " location.href='/admin-view' " type="button" class="btn btn-info mr-2 mb-2">Admin Dashboard</button>   
+        </div>
+
+    </div>
+
+    <div class="custom-box container-sm create-qn-btns hide" style="margin-top: 30px; padding: 15px;">
+
+        <button onclick = " location.href='/admin' " type="button" class="btn btn-info mr-2 mb-2">Go back</button>   
+
+        <button onclick = " location.href='/users/profile' " type="button" class="btn btn-info mr-2 mb-2">Go to Profile</button>   
+
+        
+    </div>
+
+    <div id="form-group" class="div1 container-sm hide">
 
         <form name="validation" class="form-inline" onSubmit="validate(); return false">
 
-            <input type = "number" class="form-control mb-2 mt-2 mr-sm-2" name="no-of-qns" min="2" placeholder="Enter no.of qns" style="width: 60%;" required>
+            <input type = "text" class="form-control mb-2 mt-2 mr-sm-2" name="quiz-name"  placeholder="Enter Quiz name" style="width: 60%;" required>
 
-            <button type="submit" class="btn btn-success ">Submit</button>
+            <input type = "number" class="form-control mb-2 mt-2 mr-sm-2" name="quiz-time" min="1" placeholder="Enter quiz duration" style="width: 60%;" required>
+
+
+            <input type = "number" class="form-control mb-2 mt-2" name="no-of-qns" min="2" placeholder="Enter no.of qns" style="width: 60%;" required>
+
+            <button type="submit" class="btn mb-2 mt-2 mr-2 btn-success ">Submit</button>
 
         </form>
 

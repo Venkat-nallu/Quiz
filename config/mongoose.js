@@ -15,24 +15,32 @@
 // module.exports = db;
 
 
-const mongoose = require('mongoose')
+// const mongoose = require('mongoose')
 
-const url = `mongodb+srv://VKS_CONTACT_LIST:vkscontactlist@cluster0.l0cj6.mongodb.net/E-Quiz?retryWrites=true&w=majority`;
+// const url = `mongodb+srv://VKS_CONTACT_LIST:vkscontactlist@cluster0.l0cj6.mongodb.net/E-Quiz?retryWrites=true&w=majority`;
 
-const connectionParams={
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true 
-}
-mongoose.connect(url,connectionParams)
-    .then( () => {
-        console.log('Connected to database ')
-    })
-    .catch( (err) => {
-        console.error(`Error connecting to the database. \n${err}`);
-    })
+// const connectionParams={
+//     useNewUrlParser: true,
+//     useCreateIndex: true,
+//     useUnifiedTopology: true 
+// }
+// mongoose.connect(url,connectionParams)
+//     .then( () => {
+//         console.log('\n\nConnected to mongodb atlas(E-Quiz) database ')
+//     })
+//     .catch( (err) => {
+//         console.error(`\n\nError connecting to mongodb atlas(E-Quiz) database. \n${err}`);
+//     })
 
-const db = mongoose.connection;
+// const db = mongoose.connection;
 
-module.exports = db;
+// module.exports = db;
+
+const mongoose = require('mongoose');
+
+const conn = mongoose.createConnection(`mongodb+srv://VKS_CONTACT_LIST:vkscontactlist@cluster0.l0cj6.mongodb.net/E-Quiz?retryWrites=true&w=majority`);
+
+var User = conn.model('User',require('../models/user'));
+
+module.exports = User;
 

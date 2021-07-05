@@ -1,4 +1,4 @@
-const User = require('../models/user');
+const User = require('../config/mongoose');
 
 
 module.exports.profile = function(req, res){
@@ -7,53 +7,53 @@ module.exports.profile = function(req, res){
 }
 
 
-// render the sign up page
-module.exports.signUp = function(req, res){
+// // render the sign up page
+// module.exports.signUp = function(req, res){
 
-    if (req.isAuthenticated())
-    {
-        return res.redirect('/users/profile');    //---------------
-    }x
+//     if (req.isAuthenticated())
+//     {
+//         return res.redirect('/users/profile');    //---------------
+//     }
 
-    return res.redirect("/users/auth/google");
-}
+//     return res.redirect("/users/auth/google");
+// }
 
 // render the sign in page
-module.exports.signIn = function(req, res){
+// module.exports.signIn = function(req, res){
 
-    if (req.isAuthenticated())
-    {
-        return res.redirect('/users/profile');    //----------------
-    }
+//     if (req.isAuthenticated())
+//     {
+//         return res.redirect('/users/profile');    //----------------
+//     }
 
-    return res.redirect("/users/auth/google");
-}
+//     return res.redirect("/users/auth/google");
+// }
 
 // get the sign up data
-module.exports.create = function(req, res){
+// module.exports.create = function(req, res){
 
-    if (req.body.password != req.body.confirm_password){
-        return res.redirect('back');
-    }
+//     if (req.body.password != req.body.confirm_password){
+//         return res.redirect('back');
+//     }
 
-    User.findOne({email: req.body.email}, function(err, user){
+//     User.findOne({email: req.body.email}, function(err, user){
 
-        if(err){ console.log('error in finding user in signing up'); return }
+//         if(err){ console.log('error in finding user in signing up'); return }
 
-        if (!user)  //if user is not signed-up then store user's details in db
-        {
-            User.create(req.body, function(err, user){
-                if(err){console.log('error in creating user while signing up'); return}
+//         if (!user)  //if user is not signed-up then store user's details in db
+//         {
+//             User.create(req.body, function(err, user){
+//                 if(err){console.log('error in creating user while signing up'); return}
 
-                return res.redirect('/users/sign-in');
-            })
-        }
-        else    //if user is already signedup then redirect to sign-in page
-        {
-            return res.redirect('/users/sign-in');            
-        }
-    });
-}
+//                 return res.redirect('/users/sign-in');
+//             })
+//         }
+//         else    //if user is already signedup then redirect to sign-in page
+//         {
+//             return res.redirect('/users/sign-in');            
+//         }
+//     });
+// }
 
 
 // // sign in and create a session for the user (by manual - authentication)
