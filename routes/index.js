@@ -112,20 +112,20 @@ router.get('/delete-quiz', (req,res)=>{
 // Allow admin to set question and ans via form
 router.get('/admin',function(req,res){
 
-    if (req.isAuthenticated() && req.user.email == 'vijayvenkatesh503@gmail.com')
-    {
+    // if (req.isAuthenticated() && req.user.email == 'vijayvenkatesh503@gmail.com')
+    // {
         return res.render('admin', {
             title: "Admin Page"
         });  
-    }
+    // }
 
-    else 
-    {
-        console.log('\n\nyou are not a admin\n\n')
+    // else 
+    // {
+    //     console.log('\n\nyou are not a admin\n\n')
 
-        req.flash('error','You are not an admin !!!'); 
-        res.redirect('back');
-    }
+    //     req.flash('error','You are not an admin !!!'); 
+    //     res.redirect('back');
+    // }
 
 });
 

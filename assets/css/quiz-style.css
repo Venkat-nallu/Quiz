@@ -91,7 +91,10 @@ body {
     color: white;
 } */
 
-.quiz-box .question-number, .quiz-box .question-text,
+
+/* added .question-pre  ........  removed .quiz-box .question-text*/
+
+.quiz-box .question-number,.question-pre,
 .quiz-box .answers-indicator, .quiz-box .next-question-btn,
 .quiz-box .option-container {
     width: 100%;
@@ -139,9 +142,17 @@ body {
 
 /* ---------------------------------------------------------- */
 
-.quiz-box .question-text {
-    font-size: 22px;
-    font-weight: 400;
+/* added .question-pre  ........  removed .quiz-box .question-text*/
+.question-pre{ 
+    /* font-size: 22px; */
+    /* font-weight: 400; --- */
+    
+    /* ++ */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+    font-size: 20px;    
+
+
     color: #000000;
     line-height: 22px;
     padding: 20px 0;
@@ -273,3 +284,9 @@ footer {
     text-align: center;
 }
 
+/* textarea */
+
+textarea
+{
+    resize: both;
+}

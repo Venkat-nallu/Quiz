@@ -86,9 +86,17 @@ function qnValidation()
     for(let i=1;i<=qns;++i)
     {
        
-        const A = document.createElement('input');
-        A.setAttribute('type','text');
+        // const A = document.createElement('input');   //--
+        // A.setAttribute('type','text');   //--
+
+        const A = document.createElement('textarea');   // ++
+
         A.setAttribute('id',i);
+
+        // A.setAttribute('rows',10);   // ++
+        // A.setAttribute('cols',30);   // ++
+
+
         A.classList.add('form-control','mb-2','mt-2', 'mr-sm-2');
         A.setAttribute('name','qn'+i);
         A.setAttribute('placeholder','Enter the qn '+i);
