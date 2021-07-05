@@ -80,7 +80,9 @@
 
 
 		<div class="question-text">
-			<!-- Question will be added here using js -->
+			<pre class = "question-pre">
+				<!-- Question will be added here using js -->
+			</pre>
 		</div>
 
 		<div class="option-container">
@@ -424,7 +426,10 @@
 
 			currentQuestion = questionIndex;
 
-			questionText.innerHTML = currentQuestion.q;
+			// questionText.innerHTML = currentQuestion.q; //--
+
+			document.querySelector(".question-pre").innerHTML = currentQuestion.q; //++
+
 
 				// get the index of 'currentQuestion' from the availabeQuestions Array and removing it from Array to avoid repetition
 
@@ -579,7 +584,7 @@
 
 
 				const span1 = document.createElement('span');
-				span1.classList.add("badge","badge-primary");
+				span1.classList.add("badge","badge-primary","mb-2");
 				span1.innerHTML = "Question - "+(i+1);
 
 				span1.classList.add("spn-space");
@@ -600,7 +605,7 @@
 				li2.classList.add("list-group-item");
 
 				const span3 = document.createElement('span');
-				span3.classList.add("badge","badge-primary");  
+				span3.classList.add("badge","badge-primary","mb-2");  
 				span3.innerHTML = "Your answer";
 				span3.classList.add("spn-space");
 
@@ -649,7 +654,7 @@
 				li3.classList.add("list-group-item");
 
 				const span6 = document.createElement('span');
-				span6.classList.add("badge","badge-primary");      
+				span6.classList.add("badge","badge-primary","mb-2");      
 				span6.innerHTML = "Correct answer";
 				span6.classList.add("spn-space");
 

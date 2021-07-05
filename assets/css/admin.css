@@ -72,3 +72,8 @@ hr {
    height: 100px;
    background-color: rgb(165, 40, 40);
 } */
+
+textarea
+{
+    resize: both;
+}
