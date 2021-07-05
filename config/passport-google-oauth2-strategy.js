@@ -20,8 +20,8 @@ passport.use(new googleStrategy(
 
             if(err) { console.log('\n\nError in google-strategy-passport',err); return; }
 
-            console.log(accessToken,refreshToken);
-            console.log(profile);
+            // console.log(accessToken,refreshToken);
+            // console.log(profile);
 
             if(user)
             { 
