@@ -105,6 +105,16 @@
 			</tr>
 
 			<tr>
+				<td>Quiz name</td>
+				<td><span class="name-of-quiz"></span></td>
+			</tr>
+
+			<tr>
+				<td>Date</td>
+				<td><span class="date-of-quiz"></span></td>
+			</tr>
+
+			<tr>
 				<td>Total Questions</td>
 				<td><span class="total-question"></span></td>
 			</tr>
@@ -543,6 +553,9 @@
 			clearInterval(globalTimeoutEnd);      
 			
 			document.querySelector(".name-of-user").innerHTML = userName;  // updating username in the table
+			document.querySelector(".name-of-quiz").innerHTML = quiz[0].qzName;  // updating username in the table
+			document.querySelector(".date-of-quiz").innerHTML = new Date().toJSON().slice(0,10);  // updating username in the table
+															
 			resultBox.querySelector(".total-question").innerHTML = quiz.length;
 			resultBox.querySelector(".total-attempt").innerHTML = attempt;
 			resultBox.querySelector(".total-correct").innerHTML = correctAnswers;
@@ -684,7 +697,17 @@
 			attempt = 0; 
 			flag = 1;  
 			qnNo = -1;
-			optionsEnteredByUser = [] 
+			optionsEnteredByUser = [];
+
+			// -----------------
+			mins=0;	
+			secs=0;
+			globalTimeoutEnd=0;
+
+			minsRemaining=0;
+			minsTaken=0;
+			secsRemaining=0;
+			secsTaken=0;
 		}
 
 

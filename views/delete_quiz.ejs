@@ -17,23 +17,16 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <!-- css should only be added after bs4 and all related links -->
-    <link rel="stylesheet" href="/css/available_quiz.css">
+    <link rel="stylesheet" href="/css/delete_quiz.css">
 
 </head>
 
 <body>
 
-   
-
-    <!-- <div>        -->
-
-        <!-- <p>Available Quiz</p> -->
-
-        <!-- <p> <%= allQuiz %> </p> -->
 
         <div class = "custom-box container-sm" id="quiz-list-div">
 
-            <h3>Available Quiz</h3>
+            <h4>Click the following quiz to delete</h4>
             <hr/>
             
             <ol>
@@ -59,7 +52,7 @@
             <div>
 
                 <hr/>                    
-                <button onclick = " location.href='users/profile' " type="button" class="btn btn-info" style="display: block;margin: auto;">Go back</button>
+                <button onclick = " location.href='admin' " type="button" class="btn btn-info" style="display: block;margin: auto;">Go back</button>
 
             </div>    
 
@@ -83,23 +76,22 @@
             // window.location.reload();
 
 
-            axios.post('/quiz-action', {
+            axios.post('/quiz-action-delete', {
 
                 nameOfQuiz:quizArr[ ele.id ]
 
                 })
                 .then((response) => 
                 {
-                    // console.log('inside axio in availble_quiz.ejs file -- response received is ',response.data.FinalQuizArray);
-
-                    window.location = "/quiz";                
+                    window.location = "/admin"; 
+                    
+                    console.log('\nResponse got for axios req -- inside delete-quiz.ejs file')
                 }, 
 
                 (error) => 
                 {
                     console.log(error);
-                });
-            
+                });            
         }
 
 

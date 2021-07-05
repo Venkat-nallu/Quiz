@@ -18,6 +18,9 @@ router.post('/request',adminController.qns);
 // axios for receiving the user clicked quiz from list of available quiz in available_quiz.ejs file
 router.post('/quiz-action', adminController.returningQuizFromDb);
 
+// axios for receiving the user clicked quiz from list of available quiz in delete_quiz.ejs file to delete that quiz
+router.post('/quiz-action-delete', adminController.deletingQuizFromDb);
+
 router.get('/quiz',adminController.quizPage);
 
 // router.get('/quiz',function(req,res)
@@ -87,12 +90,24 @@ router.get('/available-quiz', (req,res)=>{
 
     }).lean();
 
+})
 
-    // return res.render('available_quiz', {
-    //     title: "Availabe Quiz"
-    // }); 
+//to dsiplay available quiz in delete quiz page
+router.get('/delete-quiz', (req,res)=>{
+
+    QuestionSchema.find().distinct( 'qzName', function(err, data) {
+        
+        // console.log('\n\n\n Inside availabe quiz router -- all unique quiz  ',data)
+
+        res.render('delete_quiz', {
+            'title': "Delete Quiz",
+            'allQuiz': data
+        });
+
+    }).lean();
 
 })
+
 
 // Allow admin to set question and ans via form
 router.get('/admin',function(req,res){

@@ -85,6 +85,37 @@ module.exports.returningQuizFromDb = (req,res)=> {
 
 };
 
+module.exports.deletingQuizFromDb = (req,res)=> {
+
+    // const quizNameClickedByUser = req.body.nameOfQuiz;
+
+    // console.log('\nQuiz name clicked by user = ',quizNameClickedByUser);
+
+
+    QuestionSchema.remove({qzName:req.body.nameOfQuiz},function(err,deletedQuiz)
+    {
+        if(err)
+        {
+            console.log(err);
+        } 
+        else
+        {
+            console.log('\n\nSuccessfully deleted quiz -- ',deletedQuiz);
+        }
+
+        var revert = {redirect:'/admin'};
+
+        return res.json(revert);
+
+    });
+
+    // return res.render('quiz', {
+    //     title: "E-Quiz"
+    // }); 
+
+};
+
+
 module.exports.quizPage = (req,res)=>{
 
     console.log('\n\n\nQuiz details -- checking inside quiz router  is ',finalQuizGlobal);

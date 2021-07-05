@@ -1,29 +1,29 @@
 
- // console.log('quizarray checking ',allQuiz);
+//  // console.log('quizarray checking ',allQuiz);
 
- var quizArr = <%- JSON.stringify(allQuiz) %>;
+//  var quizArr = <%- JSON.stringify(allQuiz) %>;
 
- function redir(ele)
- {
-     // console.log('checking div...',quizArr[ ele.id ]);
+//  function redir(ele)
+//  {
+//      // console.log('checking div...',quizArr[ ele.id ]);
 
-     // window.location.reload();
+//      // window.location.reload();
 
 
-     axios.post('/quiz-action', {
+//      axios.post('/quiz-action', {
 
-         nameOfQuiz:quizArr[ ele.id ]
+//          nameOfQuiz:quizArr[ ele.id ]
 
-         })
-         .then((response) => 
-         {
+//          })
+//          .then((response) => 
+//          {
 
-             console.log(response.data.FinalQuizArray);
+//              console.log(response.data.FinalQuizArray);
 
-         }, 
-         (error) => 
-         {
-             console.log(error);
-         });
+//          }, 
+//          (error) => 
+//          {
+//              console.log(error);
+//          });
      
- }
+//  }
