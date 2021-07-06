@@ -79,32 +79,44 @@ router.get('/admin-view',function(req,res){
 
 router.get('/available-quiz', (req,res)=>{
 
-    QuestionSchema.find().distinct( 'qzName', function(err, data) {
-        
-        // console.log('\n\n\n Inside availabe quiz router -- all unique quiz  ',data)
+    if ( req.isAuthenticated() ) 
+    {
 
-        res.render('available_quiz', {
-            'title': "Available Quiz",
-            'allQuiz': data
-        });
+        QuestionSchema.find().distinct( 'qzName', function(err, data) {
+            
+            // console.log('\n\n\n Inside availabe quiz router -- all unique quiz  ',data)
 
-    }).lean();
+            res.render('available_quiz', {
+                'title': "Available Quiz",
+                'allQuiz': data
+            });
+
+        }).lean();
+    }
+
+    else return res.redirect('/');
 
 })
 
 //to dsiplay available quiz in delete quiz page
 router.get('/delete-quiz', (req,res)=>{
 
-    QuestionSchema.find().distinct( 'qzName', function(err, data) {
-        
-        // console.log('\n\n\n Inside availabe quiz router -- all unique quiz  ',data)
+    if ( req.isAuthenticated() ) 
+    {
 
-        res.render('delete_quiz', {
-            'title': "Delete Quiz",
-            'allQuiz': data
-        });
+        QuestionSchema.find().distinct( 'qzName', function(err, data) {
+            
+            // console.log('\n\n\n Inside availabe quiz router -- all unique quiz  ',data)
 
-    }).lean();
+            res.render('delete_quiz', {
+                'title': "Delete Quiz",
+                'allQuiz': data
+            });
+
+        }).lean();
+    }
+
+    else return res.redirect('/');
 
 })
 
@@ -112,20 +124,20 @@ router.get('/delete-quiz', (req,res)=>{
 // Allow admin to set question and ans via form
 router.get('/admin',function(req,res){
 
-    // if (req.isAuthenticated() && req.user.email == 'vijayvenkatesh503@gmail.com')
-    // {
+    if (req.isAuthenticated() && req.user.email == 'vijayvenkatesh503@gmail.com')
+    {
         return res.render('admin', {
             title: "Admin Page"
         });  
-    // }
+    }
 
-    // else 
-    // {
-    //     console.log('\n\nyou are not a admin\n\n')
+    else 
+    {
+        console.log('\n\nyou are not a admin\n\n')
 
-    //     req.flash('error','You are not an admin !!!'); 
-    //     res.redirect('back');
-    // }
+        req.flash('error','You are not an admin !!!'); 
+        res.redirect('back');
+    }
 
 });
 

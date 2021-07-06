@@ -118,11 +118,22 @@ module.exports.deletingQuizFromDb = (req,res)=> {
 
 module.exports.quizPage = (req,res)=>{
 
-    console.log('\n\n\nQuiz details -- checking inside quiz router  is ',finalQuizGlobal);
+    // console.log('\n\n\nQuiz details -- checking inside quiz router  is ',finalQuizGlobal);
 
-    return res.render('quiz', {
-        title: "E-Quiz",
-        quiz: finalQuizGlobal
-    }); 
+    // return res.render('quiz', {
+    //     title: "E-Quiz",
+    //     quiz: finalQuizGlobal
+    // }); 
+
+        if ( req.isAuthenticated() ) //------------------
+        {
+            return res.render('quiz', {
+                title: "E-Quiz",
+                quiz: finalQuizGlobal
+            });     
+
+        }
+
+        return res.redirect('/');    // -------------------
 
 }
