@@ -118,7 +118,12 @@ function qnValidation()
 
         document.querySelector(".qn-container").append(B);  // till now added input element to enter qn and no.of option  
 
+
+        var temp = document.createElement("br");
+        document.getElementById ("qn-con").appendChild(temp);
+
     }    
+
 
     const C = document.createElement('input');
     C.setAttribute('type','submit');
@@ -131,7 +136,7 @@ function qnValidation()
 
 function storeQn()
 {
-    console.log('Inside store qn function.............');
+    // console.log('Inside store qn function.............');
 
     for(let i=1;i<=qns;++i)
     {
@@ -141,14 +146,14 @@ function storeQn()
         Questions.push([qn,opt]);                
     }
 
-    console.log('Question Array is ',Questions);
+    // console.log('Question Array is ',Questions);
 
     optionValidation();
 }
 
 function optionValidation()
 {
-    console.log('Inside store option validation function.............');
+    // console.log('Inside store option validation function.............');
 
     for(let i=1; i<=qns; ++i)
     {
@@ -177,6 +182,9 @@ function optionValidation()
         B.setAttribute('required','true');
 
         document.querySelector(".option-container").append(B);
+
+        var temp = document.createElement("br");
+        document.querySelector(".option-container").appendChild(temp);
     }
 
     const C = document.createElement('input');
@@ -192,11 +200,11 @@ function optionValidation()
 
 function storeOption()
 {
-    console.log('Inside store option function.............');
+    // console.log('Inside store option function.............');
 
     let formElements = document.forms["Options"].getElementsByTagName("input").length;
 
-    console.log('formelements value is ',formElements);
+    // console.log('formelements value is ',formElements);
 
     for(let i=0;i<qns;++i)
     {
@@ -213,16 +221,16 @@ function storeOption()
 
     }
 
-   console.log('Options Array is ',Options); 
+//    console.log('Options Array is ',Options); 
    
-   console.log('correctAnswers Array is ',correctAnswers); 
+//    console.log('correctAnswers Array is ',correctAnswers); 
 
    finalArrObj();
 }
 
 function finalArrObj()
 {
-   console.log('Inside final obj array function..'); 
+//    console.log('Inside final obj array function..'); 
 
     for(let i=0;i<qns;++i)
     {      
@@ -238,7 +246,7 @@ function finalArrObj()
 
     }        
 
-   console.log('finalQuiz Array of obj is inside admin.js file ',finalQuiz); 
+//    console.log('finalQuiz Array of obj is inside admin.js file ',finalQuiz); 
 
    requestToServer();
 }
