@@ -264,4 +264,6 @@ function requestToServer(){
     }, (error) => {
         console.log(error);
     });
+
+    window.location = '/admin';
 }
