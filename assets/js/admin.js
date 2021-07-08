@@ -72,7 +72,7 @@ function validate()
     quizName = document.forms["validation"]["quiz-name"].value;
     quizDuration = document.forms["validation"]["quiz-time"].value;
 
-    console.log('You have entered ' + qns +' as the count of qns');
+    // console.log('You have entered ' + qns +' as the count of qns');
 
     document.querySelector(".div1").classList.add("hide");
     document.querySelector(".div2").classList.remove("hide");
