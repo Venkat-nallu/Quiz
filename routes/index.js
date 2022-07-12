@@ -3,7 +3,6 @@ const express = require('express');
 const User = require('../config/mongoose');
 const QuestionSchema = require('../config/mongoose1');
 
-
 const router = express.Router();
 const passport = require('passport');
 const homeController = require('../controllers/home_controller');
@@ -24,10 +23,9 @@ router.post('/quiz-action-delete', adminController.deletingQuizFromDb);
 router.get('/quiz',adminController.quizPage);
 
 
-
 router.get('/vks001',function(req,res){
 
-    console.log('\n\n\ninside admin router....');
+    //console.log('\n\n\ninside admin router....');
 
     if (req.isAuthenticated())
     {
@@ -42,19 +40,17 @@ router.get('/vks001',function(req,res){
 
 router.get('/admin-view',function(req,res){
 
-    console.log("\nhai......................");
-    console.log("\nUser details = " ,req.user);
+    //console.log("\nhai......................");
+    //console.log("\nUser details = " ,req.user);
 
     if (req.isAuthenticated() && req.user.email == 'vijayvenkatesh503@gmail.com')
     {
-        return res.redirect('/vks001');    //---------------
+        return res.redirect('/vks001'); 
     }
-
-    // if(req.user.email == 'vijayvenkatesh503@gmail.com') return res.redirect('/vks001');
 
     else 
     {
-        console.log('\n\nyou are not a admin\n\n')
+        //console.log('\n\nyou are not a admin\n\n')
 
         req.flash('error','You are not an admin !!!'); 
         res.redirect('back');
@@ -67,7 +63,6 @@ router.get('/available-quiz', (req,res)=>{
 
     if ( req.isAuthenticated() ) 
     {
-
         QuestionSchema.find().distinct( 'qzName', function(err, data) {
             
             // console.log('\n\n\n Inside availabe quiz router -- all unique quiz  ',data)
@@ -84,7 +79,7 @@ router.get('/available-quiz', (req,res)=>{
 
 })
 
-//to dsiplay available quiz in delete quiz page
+//to display available quiz in delete quiz page
 router.get('/delete-quiz', (req,res)=>{
 
     if ( req.isAuthenticated() ) 
@@ -119,12 +114,11 @@ router.get('/admin',function(req,res){
 
     else 
     {
-        console.log('\n\nyou are not a admin\n\n')
+        //console.log('\n\nyou are not a admin\n\n')
 
         req.flash('error','You are not an admin !!!'); 
         res.redirect('back');
     }
-
 });
 
 
