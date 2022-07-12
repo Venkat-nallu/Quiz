@@ -23,21 +23,7 @@ router.post('/quiz-action-delete', adminController.deletingQuizFromDb);
 
 router.get('/quiz',adminController.quizPage);
 
-// router.get('/quiz',function(req,res)
-// {
 
-//     // if ( req.isAuthenticated() ) //------------------
-//     // {
-
-//         return res.render('quiz', {
-//             title: "E-Quiz"
-//         });     
-
-//     // }
-
-// //     // return res.redirect('/');    // -------------------
-
-// });
 
 router.get('/vks001',function(req,res){
 
