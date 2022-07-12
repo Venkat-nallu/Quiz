@@ -26,8 +26,6 @@
 
 <body>
 
-	<!-- <h1>Quiz asked by user is --- <%= quiz %> </h1> -->
-
 	<div class="alert alert-danger alert-dismissible fade show alert-homeBox hide" style="max-width: 700px;margin: 40px auto;">
 		<button type="button" class="close" data-dismiss="alert">&times;</button>
 		<strong>Warning!!!</strong>&nbsp;&nbsp;Enter your name</span>
@@ -78,7 +76,6 @@
 			<!-- Question 1 Of 5 will be added here using js -->
 		</div>
 
-
 		<div class="question-text">
 			<pre class = "question-pre">
 				<!-- Question will be added here using js -->
@@ -92,7 +89,6 @@
 		<div class="next-question-btn">
 			<button type="button" class="btn btn-info" onclick="next()">Next</button>
 		</div>
-
 	</div>
 
 	<div class="result-box custom-box hide" id="result-box-id">
@@ -170,10 +166,7 @@
 			<!-- <button type="button" class="btn btn-info" onclick = " location.href='/dash'" >Go to My Profile</button> -->
 
 			<button type="button" class="btn btn-info mb-2"data-toggle="modal" data-target="#myModal" >Go to My Profile</button>
-
-
 		</div>
-
 	</div>
 
 	<div id ="review" class = "review container-sm hide custom-box">
@@ -184,7 +177,6 @@
 		</ul>
 
 		<button type="button" class="btn btn-info" onclick="previousPage()" style="margin: auto;display: block;">Previous Page</button>
-
 	</div>
 
 	<div class="container">
@@ -210,37 +202,25 @@
 			  
 				<button type="button" class="btn btn-success" onclick="location.href='users/profile';" >Go to</button>				
 				<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-
 			  </div>
 			  
 			</div>
 		  </div>
 		</div>
-		
 	  </div>
 
 	<!-- JS -->
 
-	
-
-	<!-- <script src="/js/quiz-question.js"> </script> -->
-
-	<!-- <script src="/js/quiz-site.js"> </script> -->
-
-
 	<script>
 
-		const quiz = <%- JSON.stringify(quiz) %>;	//----------------------------------------------------------------
+		const quiz = <%- JSON.stringify(quiz) %>;
 
 		const quizTiming = quiz[0].quizTiming;
 
 		// console.log('\n\n quiztiming inside quiz.ejs file ',quizTiming);
 		
-		// const quizTiming = 1;   //----------------------------------------------------------------------------------------------
-
-
+		// const quizTiming = 1;  
 		// console.log('\n\nFinal Quiz array of obj...inside quiz.ejs is ',quiz);
-
 
 		const questionNumber = document.querySelector(".question-number");
 		const questionText = document.querySelector(".question-text");
@@ -303,6 +283,7 @@
 				//Display both minutes and seconds 
 				//getminutes and getseconds is used to 
 				//get minutes and seconds 
+				
 				else 
 				{ 
 					minutes.value = getminutes();  
@@ -362,9 +343,6 @@
 			} 
 		} 
 
-
-		// ------------------------------------------------------------------------------------
-
 		function timer()
 		{
 			mins = quizTiming;   // quizTiming is declared  in question.js file
@@ -372,7 +350,7 @@
 			globalTimeoutEnd = setInterval(Decrement,1000);
 		}
 
-		// --------------------------------T I M E R  E N D -----------------------------------------------------------------
+		  // --------------------------------T I M E R  E N D ---------------------------------
 
 
 		// Function to push all questions+options(a object)  into an array
@@ -385,7 +363,6 @@
 			{
 				availableQuestions.push(quiz[i]);
 			} 
-
 		}
 
 
@@ -402,7 +379,7 @@
 			opt.innerHTML = "Question " + (questionCounter+1) + " of " + quiz.length;
 			questionNumber.append(opt);
 
-						//--------------- creating 3 input elements for mins,:,secs inside div
+			//--------------- creating 3 input elements for mins,:,secs inside div
 
 
 			const opt1 = document.createElement("div");
@@ -427,7 +404,7 @@
 			opt4.type = Text;
 			opt1.append(opt4);
 
-			questionNumber.append(opt1);            // appending the created div for displaying timer
+			questionNumber.append(opt1);     // appending the created div for displaying timer
 			
 
 			// displaying the "actual question" using rand() function
@@ -441,7 +418,7 @@
 			document.querySelector(".question-pre").innerHTML = currentQuestion.q; //++
 
 
-				// get the index of 'currentQuestion' from the availabeQuestions Array and removing it from Array to avoid repetition
+			// get the index of 'currentQuestion' from the availabeQuestions Array and removing it from Array to avoid repetition
 
 			const index1  = availableQuestions.indexOf(questionIndex);
 			availableQuestions.splice(index1,1); // removing from array
@@ -501,10 +478,10 @@
 			{
 				++correctAnswers;
 			}
-			// else
-			// {
-			//     console.log("Wrong answer");
-			// }
+			else
+			{
+			    //console.log("Wrong answer");
+			}
 
 			++attempt;
 
@@ -521,8 +498,8 @@
 			}
 		}
 
-		// function to display next question and its options when 'next' button is clicked
 
+		// function to display next question and its options when 'next' button is clicked
 		function next()
 		{
 			if(questionCounter === quiz.length) // base case for count of qns
@@ -551,7 +528,7 @@
 			quizResult();
 		}
 
-									// Updating all value to the report card
+				           //--------- Updating all value to the report card------------
 
 		function quizResult()
 		{
@@ -626,8 +603,6 @@
 
 				const span5 = document.createElement('span');
 
-				// ------------testing
-
 				// console.log("testing optionsEnteredByUser[] ==> ",optionsEnteredByUser);
 
 				if(op == undefined)
@@ -644,7 +619,6 @@
 					span5.classList.add("badge","badge-success","badge-pill");        
 					span5.innerHTML = "Correct";
 					span5.classList.add("spn-space");
-
 				}
 
 				else
@@ -661,7 +635,6 @@
 				li2.appendChild(span5);
 
 				headDiv.appendChild(li2);   // till now added 2nd list item
-
 
 				const li3 = document.createElement('li');
 				li3.classList.add("list-group-item");
@@ -682,11 +655,8 @@
 
 				
 				Review.appendChild(headDiv);
-
 				Review.appendChild(document.createElement('br'));       
-
 			}
-		
 		}
 
 		function previousPage()
@@ -704,7 +674,6 @@
 			qnNo = -1;
 			optionsEnteredByUser = [];
 
-			// -----------------
 			mins=0;	
 			secs=0;
 			globalTimeoutEnd=0;
@@ -754,7 +723,6 @@
 			homeBox2.classList.remove("hide");
 		}
 
-
 		function goToHome()
 		{  
 			resetQuiz();    
@@ -765,7 +733,7 @@
 			homeBox1.classList.remove("hide");
 		} 
 
-										//  STARTING POINT.......................    
+			//----------------  STARTING POINT OF QUIZ.......................    
 
 		function startQuiz()
 		{
@@ -779,12 +747,11 @@
 		}
 
 
-		// ------------------For hiding 3 buttons when report card downloading---------------------
+			// -------For hiding 3 buttons when report card downloading----------
 
 		function DisplayThisDiv()
 		{
 			document.getElementById("result-page-buttons").classList.remove("hide");
-			// goToHome();
 		}
 
 		function hideThisDiv()
@@ -820,8 +787,6 @@
 					html2pdf().from(reportCard).set(opt).save();
 				})
 		} 
-
-
 
     </script>
 
