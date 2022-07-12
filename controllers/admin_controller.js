@@ -14,7 +14,8 @@ module.exports.qns = function(req, res){
             return res.send('Error saving');
         }
    
-        else console.log('\n\nSuccessfully added the arr of obj into db\n\n');
+        else 
+              //console.log('\n\nSuccessfully added the arr of obj into db\n\n');
     });
 };
 
@@ -36,7 +37,7 @@ module.exports.returningQuizFromDb = (req,res)=> {
         else
         {
             finalQuizGlobal = allDetailsOfQuiz;
-            console.log('\n\n\nAll retrivedquiz quiz details suggested by user is ',allDetailsOfQuiz);
+            /console.log('\n\n\nAll retrivedquiz quiz details suggested by user is ',allDetailsOfQuiz);
         }
 
         var revert = {redirect:'/quiz',FinalQuizArray:allDetailsOfQuiz};
