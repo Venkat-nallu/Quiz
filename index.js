@@ -2,16 +2,14 @@ const express = require('express');     // adding express library from nodejs
 
 var bodyParser = require('body-parser');
 
-// adminbro---------------------------1
+// ---------adminbro-----------------1
 const AdminBro = require('admin-bro');
 const mongooseAdminBro = require('@admin-bro/mongoose');
 const expressAdminBro = require('@admin-bro/express');
-// // -----------------------------------1
+//-----------------------------------1
 
 const cookieParser = require('cookie-parser');
 const port = 8200;
-// const db = require('./config/mongoose'); //--------------------------------------------------------------------
-// const DB = require('./config/mongoose1');
 
 const path = require('path');           //to join path of ejs files to current file
 
@@ -28,7 +26,8 @@ const flash = require('connect-flash');
 const customMware = require('./config/middleware');
 
 
-//Admin Bro and Models --------------------------- 2
+//----------------Admin Bro and Models --------- 2
+
 // const Visiter = require('./models/user');
 
 const Visiter = require('./config/mongoose');
@@ -41,7 +40,8 @@ const AdminBroOptions = {
     // loginPath: '/xyz-admin/sign-in',
     resources: [Visiter]
 }
-// ----------------------------------------------- 2
+
+// --------------------------------------------- 2
 
 
 app.use(express.urlencoded());
@@ -83,7 +83,6 @@ app.use(session({
     store: new MongoStore(
         {
             uri: `mongodb+srv://VKS_CONTACT_LIST:vkscontactlist@cluster0.l0cj6.mongodb.net/E-Quiz?retryWrites=true&w=majority`,
-            //mongooseConnection: db, //-----------------------------------------------------------------------
             autoRemove: 'disabled'
         
         },
@@ -104,14 +103,14 @@ app.use(flash());
 app.use(customMware.setFlash);
 
 
-//adminbro --------------------------------  3
+//--------------adminbro -----------------  3
 
 const adminBro = new AdminBro(AdminBroOptions)
 const router = expressAdminBro.buildRouter(adminBro)
 
 app.use(adminBro.options.rootPath, router)
 
-// --------------------------------------------- 3
+// ---------------------------------------- 3
 
 
 // use express router(should be placed at end)
