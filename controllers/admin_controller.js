@@ -15,7 +15,9 @@ module.exports.qns = function(req, res){
         }
    
         else 
-              //console.log('\n\nSuccessfully added the arr of obj into db\n\n');
+        {
+              console.log('\n\nSuccessfully added the arr of obj into db\n\n');
+        }
     });
 };
 
