@@ -39,7 +39,7 @@ module.exports.returningQuizFromDb = (req,res)=> {
         else
         {
             finalQuizGlobal = allDetailsOfQuiz;
-            /console.log('\n\n\nAll retrivedquiz quiz details suggested by user is ',allDetailsOfQuiz);
+            //console.log('\n\n\nAll retrivedquiz quiz details suggested by user is ',allDetailsOfQuiz);
         }
 
         var revert = {redirect:'/quiz',FinalQuizArray:allDetailsOfQuiz};
